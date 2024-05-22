@@ -30,7 +30,7 @@ struct ContentView: View {
         Spacer()
             .frame(height: 100.0)
         
-        ZStack{
+        ZStack(alignment: .top){
             Text("Does this give you a")
             Text("SEIZURE?").font(.title)
         }
