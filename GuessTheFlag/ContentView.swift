@@ -9,8 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        LinearGradient(colors: [.red, .black], startPoint: .top, endPoint: .bottom)
-            .ignoresSafeArea()
+        ZStack{
+            LinearGradient(colors: [.red, .black], startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+            Button() {
+                print("Hello World")
+            }
+            label: {
+                Label("Edit", systemImage: "pencil")
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.purple)
+            
+        }
     }
 }
 
