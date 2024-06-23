@@ -15,7 +15,7 @@ struct ContentView: View {
                 .ignoresSafeArea()
             Button() {
                 showingAlert = true
-                print("Hello World")
+                print("Opened alert")
             }
             label: {
                 Label("Edit", systemImage: "pencil")
@@ -23,8 +23,12 @@ struct ContentView: View {
             .buttonStyle(.borderedProminent)
             .tint(.red)
             .alert("Editing content", isPresented: $showingAlert) {
-                Button("Stop", role: .destructive) { }
-                Button("Yes", role: .cancel) { }
+                Button("Stop", role: .destructive) {
+                    print("Cancelled action")
+                }
+                Button("Yes", role: .cancel) {
+                    print("Editing data...")
+                }
             }
             message: {
                 Text("This action will overwrite data, are you sure you want to proceed?")
