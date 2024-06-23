@@ -8,30 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showingAlert = false
+    var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"]
+    var correctAnswer = Int.random(in: 0...2)
+    
     var body: some View {
-        ZStack{
-            LinearGradient(colors: [.red, .black], startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
-            Button() {
-                showingAlert = true
-                print("Opened alert")
-            }
-            label: {
-                Label("Edit", systemImage: "pencil")
-            }
-            .buttonStyle(.borderedProminent)
-            .tint(.red)
-            .alert("Editing content", isPresented: $showingAlert) {
-                Button("Stop", role: .destructive) {
-                    print("Cancelled action")
+        ZStack {
+            Color.blue.ignoresSafeArea()
+            VStack (spacing: 30) {
+                VStack{
+                    Text("Tap the flag of").foregroundStyle(.white)
+                    Text(countries[correctAnswer]).font(.largeTitle).foregroundStyle(.white
+                    )
                 }
-                Button("Yes", role: .cancel) {
-                    print("Editing data...")
+                
+                ForEach(0..<3) { number in
+                    Button {
+                        print ("Flag is tapped")
+                    } label: {
+                        Image(countries[number])
+                    }
                 }
-            }
-            message: {
-                Text("This action will overwrite data, are you sure you want to proceed?")
             }
         }
     }
