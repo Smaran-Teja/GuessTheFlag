@@ -17,26 +17,38 @@ struct ContentView: View {
         ZStack {
             LinearGradient(colors: [.blue, .black], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
-            VStack (spacing: 30) {
-                VStack{
-                    Text("Tap the flag of")
-                        .foregroundStyle(.white)
-                        .fontWeight(.light)
-                    
-                    Text(countries[correctAnswer])
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.white)
-                }
+            VStack {
+                Text("Guess the Flag")
+                    .font(.largeTitle.bold())
+                    .foregroundStyle(.white)
                 
-                ForEach(0..<3) { number in
-                    Button {
-                        onFlagPress(number)
-                    } label: {
-                        Image(countries[number])
-                            .clipShape(.capsule)
-                            .shadow(radius: 10)
-                    } 
+                Text("Score: ???")
+                    .font(.title)
+                    .foregroundStyle(.white)
+                
+                Spacer().frame(width: 100, height: 50)
+                
+                VStack (spacing: 30) {
+                    VStack{
+                        Text("Tap the flag of")
+                            .foregroundStyle(.white)
+                            .fontWeight(.light)
+                        
+                        Text(countries[correctAnswer])
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                    }
+                    
+                    ForEach(0..<3) { number in
+                        Button {
+                            onFlagPress(number)
+                        } label: {
+                            Image(countries[number])
+                                .clipShape(.capsule)
+                                .shadow(radius: 10)
+                        } 
+                    }
                 }
             }
         }.alert(scoreTitle, isPresented: $showingScore) {
